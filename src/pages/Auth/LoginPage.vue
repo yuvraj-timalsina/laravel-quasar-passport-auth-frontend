@@ -20,7 +20,7 @@
               lazy-rules
             >
               <template v-slot:prepend>
-                <q-icon name="badge" />
+                <q-icon name="badge"/>
               </template>
             </q-input>
             <q-input
@@ -32,12 +32,12 @@
               type="password"
             >
               <template v-slot:prepend>
-                <q-icon name="key" />
+                <q-icon name="key"/>
               </template>
             </q-input>
 
             <div>
-              <q-btn rounded class="full-width" color="primary" label="Login" type="submit"/>
+              <q-btn class="full-width" color="primary" label="Login" rounded type="submit"/>
             </div>
           </q-form>
 

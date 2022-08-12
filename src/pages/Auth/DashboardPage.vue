@@ -14,14 +14,14 @@
         <q-btn v-if="$q.screen.gt.xs" :to="{name:'MainLayout'}" class="q-ml-xs" flat no-caps no-wrap target="_blank">
           <q-icon color="secondary" name="cruelty_free" size="3em"/>
           <q-toolbar-title class="text-weight-bold" shrink>
-            Quasar App
+           {{ user.name }}
           </q-toolbar-title>
         </q-btn>
 
         <q-space/>
 
         <div class="q-gutter-sm row items-center no-wrap">
-          <q-btn icon-right="logout" color="secondary" label="Logout" @click="logOut"/>
+          <q-btn color="secondary" icon-right="logout" label="Logout" @click="logOut"/>
         </div>
       </q-toolbar>
     </q-header>
@@ -98,6 +98,7 @@ onMounted(() => {
 function userDetail () {
   api.post('user-detail')
     .then(res => {
+      console.log(res.data.data.name)
       user.value = res.data.data
     })
     .catch(err => {

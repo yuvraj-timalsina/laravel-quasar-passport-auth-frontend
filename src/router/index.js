@@ -12,9 +12,7 @@ import routes from './routes'
  */
 
 export default route(function (/* { store, ssrContext } */) {
-  const createHistory = process.env.SERVER
-    ? createMemoryHistory
-    : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory)
+  const createHistory = process.env.SERVER ? createMemoryHistory : (process.env.VUE_ROUTER_MODE === 'history' ? createWebHistory : createWebHashHistory)
 
   const Router = createRouter({
     scrollBehavior: () => ({
@@ -30,6 +28,9 @@ export default route(function (/* { store, ssrContext } */) {
   })
   Router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
+      onpopstate = function () {
+        location.reload()
+      }
       if (!localStorage.getItem('token')) {
         next({ name: 'LoginPage' })
       } else {
