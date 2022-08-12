@@ -38,5 +38,16 @@ export default route(function (/* { store, ssrContext } */) {
     }
     next()
   })
+
+  Router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.redirectTo)) {
+      if (localStorage.getItem('token')) {
+        next({ name: 'DashboardPage' })
+      } else {
+        next()
+      }
+    }
+    next()
+  })
   return Router
 })

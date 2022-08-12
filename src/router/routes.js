@@ -4,11 +4,17 @@ const routes = [{
   children: [{
     path: 'register',
     name: 'RegisterPage',
-    component: () => import('pages/Auth/RegisterPage.vue')
+    component: () => import('pages/Auth/RegisterPage.vue'),
+    meta: {
+      redirectTo: true
+    }
   }, {
     path: 'login',
     name: 'LoginPage',
-    component: () => import('pages/Auth/LoginPage.vue')
+    component: () => import('pages/Auth/LoginPage.vue'),
+    meta: {
+      redirectTo: true
+    }
   }, {
     path: 'dashboard',
     name: 'DashboardPage',
